@@ -715,3 +715,59 @@ sub {
   padding: 1.5rem;
   margin: 2rem 0;
 }
+
+/* meine hinzufügungen */
+/* Styling für den Table of Contents (TOC) als Seitenmenü */
+#table-of-contents {
+    position: fixed;        /* Das Menü bleibt fest auf der Seite */
+    top: 0.0001rem;              /* Abstand von oben */
+    left: 0;                /* Positioniere es links */
+    width: 220px;           /* Breite des Menüs */
+    padding: 15px;          /* Innenabstand */
+    height: 100%;           /* Volle Höhe der Seite */
+    overflow-y: auto;       /* Falls der Inhalt zu lang wird, Scrollbar hinzufügen */
+}
+
+#table-of-contents ul {
+    list-style-type: none;   /* Keine Aufzählungszeichen */
+    padding-left: 0;         /* Kein Einrücken */
+}
+
+#table-of-contents li {
+    margin-bottom: 10px;     /* Abstand zwischen den Elementen */
+}
+
+#table-of-contents a {
+    text-decoration: none;   /* Links ohne Unterstreichung */
+   /* color: #007BFF;          /* Blau für Links */
+}
+
+#table-of-contents a:hover {
+    text-decoration: underline; /* Unterstreichung beim Hover */
+}
+
+/* Hauptinhalt soll nicht vom TOC überlappt werden */
+.content {
+    margin-left: 240px;      /* Platz für das Seitenmenü lassen */
+    padding: 20px;
+}
+
+#table-of-contents h2 {
+    font-size: 1.8rem;  /* Hier kannst du die gewünschte Schriftgröße anpassen */
+    font-weight: bold;  /* Optional: Fettgedruckt */
+    margin-bottom: 1rem; /* Optional: Abstand zum nächsten Element */
+}
+
+/* Responsive Anpassungen */
+@media only screen and (max-width: 720px) {
+    #table-of-contents {
+        position: relative; /* Position relative für mobiles Layout */
+        width: 100%;       /* Vollständige Breite auf Smartphones */
+        height: auto;      /* Höhe passt sich an den Inhalt an */
+    }
+
+    .content {
+        margin-left: 0;    /* Kein Platz für TOC auf Smartphones */
+        padding: 10px;     /* Reduzierter Innenabstand auf Mobilgeräten */
+    }
+}
