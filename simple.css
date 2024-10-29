@@ -1,11 +1,21 @@
+
+@font-face {
+    font-family: 'Hack';
+    src: url('/fonts/Hack-Regular.ttf') format('truetype'),
+         url('/fonts/Hack-Bold.ttf') format('truetype'),
+         url('/fonts/Hack-BoldItalic.ttf') format('truetype'),
+         url('/fonts/Hack-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 /* Global variables. */
 :root,
 ::backdrop {
   /* Set sans-serif & mono fonts */
-  --sans-font: -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir,
+  --sans-font: Hack, -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir,
     "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica,
     "Helvetica Neue", sans-serif;
-  --mono-font: Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  --mono-font: Hack, Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   --standard-border-radius: 5px;
 
   /* Default (light) theme */
@@ -14,28 +24,29 @@
   --text: #212121;
   --text-light: #585858;
   --border: #898EA4;
-  --accent: #0d47a1;
+  --accent: #0000FF;
   --accent-hover: #1266e2;
   --accent-text: var(--bg);
-  --code: #d81b60;
+  --code: #ff21c4; 
   --preformatted: #444;
   --marked: #ffdd33;
   --disabled: #efefef;
 }
+
 
 /* Dark theme */
 @media (prefers-color-scheme: dark) {
   :root,
   ::backdrop {
     color-scheme: dark;
-    --bg: #212121;
-    --accent-bg: #2b2b2b;
+    --bg: #1e1c2f; ;
+    --accent-bg: #302f41;
     --text: #dcdcdc;
     --text-light: #ababab;
-    --accent: #ffb300;
+    --accent: #14ff00;
     --accent-hover: #ffe099;
     --accent-text: var(--bg);
-    --code: #f06292;
+    --code: #ff21c4;
     --preformatted: #ccc;
     --disabled: #111;
   }
@@ -771,3 +782,70 @@ sub {
         padding: 10px;     /* Reduzierter Innenabstand auf Mobilgeräten */
     }
 }
+
+/* Main header container */
+#header-container {
+    position: fixed; /* Positioniert den Header fest am oberen Rand */
+    top: 0;
+    left: 0;
+    width: 100%; /* Vollständige Breite */
+    background-color: var(--accent-bg); /* Verwende die globale Variable für die Hintergrundfarbe */
+    padding: 5px 0; /* Reduziertes vertikales Padding für weniger Höhe */
+    display: flex; /* Flexbox für einfache Anordnung */
+    justify-content: space-between; /* Platziert den Inhalt gleichmäßig verteilt */
+    align-items: center; /* Zentriert den Inhalt vertikal */
+/*    box-shadow: 0px 2px 5px #dcdcdc; /* Optional: Schatten für visuelle Trennung */*/
+    z-index: 1000; /* Stellt sicher, dass der Header über anderen Inhalten bleibt */
+}
+
+/* Styling for headline inside header */
+#headline h2 {
+    margin: 0; /* Entfernt den Standardabstand */
+    font-size: 1.5em; /* Schriftgröße für die Überschrift */
+    line-height: 1.2; /* Reduziert den Zeilenabstand, um die Höhe zu minimieren */
+    padding-left: 20px; /* Fügt Abstand zur linken Seite hinzu */
+}
+
+/* Styling for the headline link */
+#headline h2 a {
+    text-decoration: none; /* Entfernt die Unterstreichung */
+}
+
+
+/* Styling for main menu inside header */
+#main-menu {
+    margin: 0; /* Entfernt den Standardabstand */
+}
+
+#main-menu ul {
+    list-style: none; /* Entfernt Aufzählungszeichen */
+    padding: 0; /* Entfernt inneren Abstand */
+    padding-right: 20px; 
+    margin: 0; /* Entfernt äußeren Abstand */
+    display: flex; /* Flexbox für horizontale Anordnung */
+    gap: 15px; /* Abstand zwischen Links */
+}
+
+#main-menu a {
+    text-decoration: none; /* Entfernt die Unterstreichung */
+}
+
+#main-menu a:hover {
+    text-decoration: underline; /* Unterstreicht den Link beim Hover */
+}
+
+/* Responsives Design für kleinere Bildschirme */
+@media (max-width: 720px) {
+    /* Zentrales Layout für beide Elemente */
+    #headline {
+        position: static;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    #main-menu {
+        position: static;
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+    }
